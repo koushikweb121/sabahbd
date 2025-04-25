@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Saba! ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #6b66ff;
+            --accent: #ffde59;
+            --text: #333;
+            --light: #fff9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 300px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .music-section {
+            background: linear-gradient(135deg, var(--secondary), #8a2be2);
+            color: white;
+        }
+
+        .player-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .youtube-music {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .secret-section {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            position: relative;
+            min-height: 300px;
+        }
+
+        .secret-message-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secret-message-box:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,214,214,0.8) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+
+        #secretMessage {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-style: italic;
+            color: #d23669;
+        }
+
+        .secret-heart {
+            font-size: 3rem;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .secret-heart:hover {
+            transform: scale(1.2);
+        }
+
+        .private-section {
+            background: #ffebee;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            position: relative;
+            display: none;
+        }
+
+        .private-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .private-gallery {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .private-image-container {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .private-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s;
+        }
+
+        .private-caption {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .gallery-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .gallery-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .gallery-counter {
+            align-self: center;
+            color: var(--text);
+        }
+
+        .image-text-section {
+            padding: 60px 5%;
+            background: #f9f3f3;
+        }
+
+        .image-text-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .image-text-item {
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-text-item img {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s;
+        }
+
+        .image-text-item img:hover {
+            transform: scale(1.02);
+        }
+
+        .image-text-content {
+            max-width: 600px;
+            margin-top: 30px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .image-text-content:before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: white;
+            rotate: 45deg;
+        }
+
+        .image-text-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+        }
+
+        .image-text-content p {
+            line-height: 1.6;
+            color: var(--text);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--text);
+            color: white;
+        }
+
+        .heart {
+            color: var(--primary);
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .password-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            animation: fadeIn 0.5s;
+        }
+
+        .password-box h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .password-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .password-btn:hover {
+            background: var(--secondary);
+        }
+
+        .wrong-password {
+            animation: shake 0.5s;
+            border-color: red !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2rem; }
+            .gallery { grid-template-columns: 1fr; }
+            .private-image-container { height: 300px; }
+            .image-text-item img { height: 300px; }
+            .image-text-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="password-modal" id="passwordModal">
+        <div class="password-box">
+            <h3>🔒 Private Content</h3>
+            <p>Enter the secret password to unlock special content:</p>
+            <input type="password" class="password-input" id="passwordInput" placeholder="Our secret word...">
+            <button class="password-btn" onclick="checkPassword()">Unlock</button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>Happy Birthday Saba!</h1>
+        <p>Every moment with you is a beautiful memory ✨</p>
+        <a href="#gallery" class="btn">Our Journey</a>
+        
+        <div style="position: absolute; bottom: 0; width: 100%; text-align: center;">
+            <span style="font-size: 2rem; margin: 0 10px; display: inline-block; animation: float 3s ease-in-out infinite;">🎈</span>
+            <span style="font-size: 2rem; margin: 0 10px; display: inline-block; animation: float 4s ease-in-out infinite 0.5s;">🎉</span>
+            <span style="font-size: 2rem; margin: 0 10px; display: inline-block; animation: float 3.5s ease-in-out infinite 1s;">🎁</span>
+        </div>
+    </section>
+
+    <section class="section" id="gallery">
+        <h2 class="section-title">Our Beautiful Moments</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="photo1.jpg" alt="Memory 1">
+                <div class="gallery-caption">"That Snapchat blush 😳... Your smile short-circuited my heart. Swipe right if you'd do it again 😘"</div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo2.jpg" alt="Memory 2">
+                <div class="gallery-caption">"Saree + Shy Smile = Weapon of Mass Distraction 💣 Still recovering from this look..."</div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo3.jpg" alt="Memory 3">
+                <div class="gallery-caption">"That earring moment 💎 When you leaned in and my screen froze... just like my heart ❤️‍🔥"</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section music-section">
+        <h2 class="section-title">Our Soundtrack</h2>
+        <div class="player-container">
+            <iframe class="youtube-music" src="https://www.youtube.com/watch?v=qMPqnA8kjT0" 
+                    frameborder="0" 
+                    allowfullscreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+            </iframe>
+        </div>
+    </section>
+
+    <section class="section secret-section">
+        <h2 class="section-title">Our Secret Garden</h2>
+        <div class="secret-message-box">
+            <div id="secretMessage">"Click the heart to read my secret thoughts..."</div>
+            <div class="secret-heart" onclick="revealSecretMessage()">❤️</div>
+        </div>
+    </section>
+
+    <section class="image-text-section">
+        <div class="image-text-container">
+            <div class="image-text-item">
+                <img src="special1.jpg" alt="Special Memory 1">
+                <div class="image-text-content">
+                    <h3>Hair Flip Moment</h3>
+                    <p>"Hair flip ➡️ Saree slip. The accidental reveal that wasn't accidental at all 😏"</p>
+                </div>
+            </div>
+
+            <div class="image-text-item">
+                <img src="special2.jpg" alt="Special Memory 2">
+                <div class="image-text-content">
+                    <h3>Curves Appreciation</h3>
+                    <p>"POV: When your curves deserve their own zip code 📍 (I'd gladly pay the rent)"</p>
+                </div>
+            </div>
+
+            <div class="image-text-item">
+                <img src="special3.jpg" alt="Special Memory 3">
+                <div class="image-text-content">
+                    <h3>Model Pose</h3>
+                    <p>"Memo to self: Breathe. Because damn. Just. Damn. 🥵"</p>
+                </div>
+            </div>
+
+            <div class="image-text-item">
+                <img src="special4.jpg" alt="Special Memory 4">
+                <div class="image-text-content">
+                    <h3>Navel Close-Up</h3>
+                    <p>"Navel Academy Award goes to... (Hint: It's you, every time) 🏆"</p>
+                </div>
+            </div>
+
+            <div class="image-text-item">
+                <img src="special5.jpg" alt="Special Memory 5">
+                <div class="image-text-content">
+                    <h3>Reading in Red</h3>
+                    <p>"Red saree + half-read book = The sexiest library fine I'd gladly pay 📚💋"</p>
+                </div>
+            </div>
+
+            <div class="image-text-item">
+                <img src="special6.jpg" alt="Special Memory 6">
+                <div class="image-text-content">
+                    <h3>Saree Drape</h3>
+                    <p>"Saree drape game strong 💪 Stronger? My willpower not to screenshot every second 😈"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section">
+        <div class="private-section" id="privateSection">
+            <div class="private-badge">PRIVATE GALLERY</div>
+            <h2 class="section-title">Just Between Us</h2>
+            
+            <div class="private-gallery">
+                <div class="private-image-container">
+                    <img id="privateImage" src="private1.jpg" alt="Our private moment">
+                </div>
+                <div class="private-caption" id="privateCaption">
+                    "This art reminds me of what I crave most... your curves. When will you bless my view? 😏🔥"
+                </div>
+                <div class="gallery-nav">
+                    <button class="gallery-btn" onclick="prevImage()">← Previous</button>
+                    <span class="gallery-counter" id="imageCounter">1/3</span>
+                    <button class="gallery-btn" onclick="nextImage()">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with <span class="heart">❤️</span> for Saba's Birthday</p>
+        <p>© 2023 | Whatever we are, it's special</p>
+    </footer>
+
+    <script>
+        // ===== PASSWORD PROTECTION =====
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            if (password === "theamazinggirl") {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('privateSection').style.display = 'block';
+                
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        createHeart();
+                    }, i * 300);
+                }
+            } else {
+                document.getElementById('passwordInput').classList.add('wrong-password');
+                setTimeout(() => {
+                    document.getElementById('passwordInput').classList.remove('wrong-password');
+                }, 500);
+                alert("Wrong password! Try again 😉");
+            }
+        }
+
+        // Allow pressing Enter key to submit password
+        document.getElementById('passwordInput').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // ===== ENHANCED SECRET MESSAGES =====
+        const secretMessages = [
+            "Your lips taste like the sweetest sin I never want to repent from...",
+            "I still remember the way you moaned my name that night - it plays on loop in my mind...",
+            "Every inch of your body is a map I want to explore endlessly...",
+            "The way your breath quickens when I touch you drives me wild...",
+            "I dream about the way your skin feels under my fingertips...",
+            "Our chemistry is more intoxicating than the finest wine...",
+            "I crave the way your body arches when I... [click again to complete this thought]",
+            "You're my favorite fantasy and my most delicious reality...",
+            "The memory of your touch lingers on my skin like morning dew...",
+            "I want to trace every curve of you with my lips..."
+        ];
+
+        function revealSecretMessage() {
+            const randomIndex = Math.floor(Math.random() * secretMessages.length);
+            document.getElementById('secretMessage').innerHTML = `"${secretMessages[randomIndex]}"`;
+            
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => createHeart(), i * 300);
+            }
+        }
+
+        // ===== PRIVATE GALLERY =====
+        const privateGallery = [
+            {
+                image: "private1.jpg",
+                caption: "This art reminds me of what I crave most... your curves. When will you bless my view? 😏🔥"
+            },
+            {
+                image: "private2.jpg",
+                caption: "Imagine if this was yours... I'd worship every inch. Show me, and I'll prove it. 👅💦"
+            },
+            {
+                image: "private3.jpg",
+                caption: "A backside this perfect deserves to be yours. Let me see it, and I'll make it worth your while. 🍑✨"
+            }
+        ];
+
+        let currentImageIndex = 0;
+
+        function updateGallery() {
+            document.getElementById('privateImage').src = privateGallery[currentImageIndex].image;
+            document.getElementById('privateCaption').innerHTML = `"${privateGallery[currentImageIndex].caption}"`;
+            document.getElementById('imageCounter').textContent = `${currentImageIndex + 1}/${privateGallery.length}`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % privateGallery.length;
+            updateGallery();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + privateGallery.length) % privateGallery.length;
+            updateGallery();
+        }
+
+        // Initialize gallery
+        updateGallery();
+
+        // ===== FLOATING HEARTS =====
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.animation = `float ${Math.random() * 3 + 2}s linear forwards`;
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
